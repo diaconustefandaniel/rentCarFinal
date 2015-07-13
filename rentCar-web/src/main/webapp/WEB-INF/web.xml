@@ -34,31 +34,40 @@
         <param-value>/WEB-INF/spring/rentCar-app-config.xml</param-value>
     </context-param>
   
-   <context-param>
+   <!-- <context-param>
         <param-name>log4jConfigLocation</param-name>
         <param-value>WEB-INF/conf/log4j.xml</param-value>
-    </context-param>
+    </context-param> 
     <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>
+    </listener>-->
     
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    <!-- Spring MVC -->
+    
+    <!-- Jersey stuff  -->
     <servlet>
-        <servlet-name>bookstore</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>
-                /WEB-INF/spring/rentCar-app-config.xml
-            </param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>rentCar</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<servlet-class>
+			com.sun.jersey.spi.spring.container.servlet.SpringServlet
+		</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>com.rest</param-value>
+			
+    		<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+    		<param-value>true</param-value>
+
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+ 
+	<servlet-mapping>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+    
+    
+   
 </web-app>

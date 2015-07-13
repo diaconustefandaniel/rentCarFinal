@@ -14,7 +14,7 @@
 
     <jpa:repositories base-package="com.repository" />
 
-    <context:component-scan base-package="com.services" annotation-config="true" />
+    <context:component-scan base-package="com.services, com.rest" annotation-config="true" />
 
     <!-- Drives transactions in a local Hibernate environment -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
