@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	 xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<!-- \BOOKSTORE_CONFIG is a system environment variable.
+		In Eclipse IDE you can open the Servers view, go to your Tomcat Server,
+		Open launch configuration, go to Environment tab and add it in there.
+		 -->
+   <!--  <context:property-placeholder location="file:${BOOKSTORE_CONFIG}/bookstore-app.properties" /> -->
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://localhost:5432/lalalala?useUnicode=true;characterEncoding=UTF-8;" />
+        <property name="username" value="postgres" />
+        <property name="password" value="parola" />
+    </bean>
+
+    <util:properties id="hibernateProps">
+        <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+        <prop key="hibernate.show_sql">true</prop>
+        <prop key="hibernate.format_sql">true</prop>
+        <prop key="hibernate.use_sql_comments">true</prop>
+        <prop key="hibernate.hbm2ddl.auto">create</prop>
+        <prop key="hibernate.connection.CharSet">utf8</prop>
+        <prop key="hibernate.connection.characterEncoding">utf8</prop>
+        <prop key="hibernate.connection.useUnicode">true</prop>
+        <prop key="hibernate.connection.release_mode">auto</prop>
+    </util:properties>
+</beans>
