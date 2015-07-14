@@ -1,5 +1,7 @@
 package com.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,21 @@ public class CustomerServiceImpl implements CustomerService {
 
 		return this.customerRepository.save(c1);
 
+	}
+
+	public Customer getCustomerById(Long id) {
+		
+		return this.customerRepository.findOne(id);
+	}
+
+	public void deleteCustomer(Long id) {
+		
+		 this.customerRepository.delete(id);
+	}
+
+	public List<Customer> findAllCustomers() {
+		
+		return this.customerRepository.findAll();
 	}
 
 }

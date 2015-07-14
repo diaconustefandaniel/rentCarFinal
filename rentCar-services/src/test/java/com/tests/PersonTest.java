@@ -47,4 +47,33 @@ public class PersonTest extends BaseServicesTest {
 		ClientResponse response=webResourceTest.type(MediaType.APPLICATION_JSON).post(ClientResponse.class);
 		Assert.assertEquals(200, response.getStatus());
 	}
+	
+	@Test
+	public void testGetCustomer(){
+		
+		Client client=Client.create();     
+		WebResource webResourceTest =client.resource("http://localhost:8080/rentCar-web/rest/customer/1");
+		ClientResponse response=webResourceTest.type(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+		Assert.assertEquals(200, response.getStatus());
+	}
+	
+	@Test
+	public void testDeleteCustomer(){
+		
+		Client client=Client.create();     
+		WebResource webResourceTest =client.resource("http://localhost:8080/rentCar-web/rest/customer/1");
+		ClientResponse response=webResourceTest.type(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
+		Assert.assertEquals(200, response.getStatus());
+	}
+	
+	@Test
+	public void testAllCustomers()
+	{
+		Client client=Client.create();     
+		WebResource webResourceTest =client.resource("http://localhost:8080/rentCar-web/rest/customer/");
+		ClientResponse response=webResourceTest.type(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+		Assert.assertEquals(200, response.getStatus());
+	}
+	
+	
 }
