@@ -26,9 +26,6 @@ public class CustomerRestCrud {
 	@Autowired
 	private CustomerService customerService;
 
-	@Autowired
-	private CustomerRepository customerRepository;
-
 	@POST
 	@Path("")
 	@Produces("application/json")
